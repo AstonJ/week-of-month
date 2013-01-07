@@ -34,7 +34,8 @@ module WeekOfMonth
     #        26, 27, 28, 29, 30]
     # @return [Array]
     def days_array
-      day = self.beginning_of_month.cwday
+      day = self.beginning_of_month.wday
+      day = 7 if day == 0 #mimics cwday
       array = []
       array[day - 1] = 1
       (2..self.end_of_month.mday).each {|i| array << i }
